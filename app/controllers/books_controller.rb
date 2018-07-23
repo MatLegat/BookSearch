@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   def new
-    # form  view
+    @book = Book.new
   end
 
   def edit
@@ -31,6 +31,13 @@ class BooksController < ApplicationController
     render json: {
       'updated' => book.update(book_params),
       'errors' => book.errors
+    }.to_json
+  end
+
+  def destroy
+    book = Book.find(params[:id])
+    render json: {
+      'deleted' => book.destroy
     }.to_json
   end
 
