@@ -3,6 +3,8 @@
 Rails version: 5.2.0
 Ruby version: 2.5.1 (x86_64-linux)
 
+Authentication made using devise
+
 # Default
 This README would normally document whatever steps are necessary to get the
 application up and running.
