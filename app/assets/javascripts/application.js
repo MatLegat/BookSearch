@@ -14,6 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= stub 'listing'
 
 //= require jquery3
 //= require popper
