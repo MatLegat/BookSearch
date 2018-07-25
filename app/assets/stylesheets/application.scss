@@ -1,0 +1,76 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+
+ body {
+   background-color: #f5f5f5;
+   font-family: arial, sans-serif;
+ }
+
+ .topbar {
+   padding: 1em;
+   background-color: #339;
+   margin-bottom: 2em;
+   .buttons {
+     position: absolute;
+     right: 0;
+     margin-right: 1em;
+     .btn {
+        margin-left: 0.5em;
+      }
+   }
+   .title a {
+     font-size: 18pt;
+     color: #fff;
+     text-decoration: none;
+   }
+   .btn-danger {
+     background-color: #833;
+     border-color: #833;
+   }
+   .btn-danger:hover {
+     background-color: #a33;
+     border-color: #a33;
+   }
+   .btn-secondary {
+     opacity: 0.9;
+   }
+ }
+
+ div.title {
+   font-size: 15pt;
+   margin-bottom: 1em;
+ }
+
+ .flash {
+   margin: 0 5em 1em 5em;
+ }
+
+ td.td-btn {
+   width: 1px;
+   white-space: nowrap;
+   text-align: center;
+ }
+
+ .container {
+   position: relative;
+ }
+
+ .cr {
+   position: absolute;
+   right: 0;
+ }

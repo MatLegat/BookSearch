@@ -11,8 +11,27 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="topbar">
+      <span class="title">
+        <a href="/">Book Search</a>
+      </span>
+      <span class="buttons">
+        <% if not user_signed_in? %>
+          <%= link_to "Log in", new_session_path(User), class: "button btn btn-primary" %>
+        <% else %>
+          <%= link_to "Edit account", edit_user_registration_path, class: "button btn btn-secondary" %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "button btn btn-danger" %>
+        <% end %>
+      </span>
+    </div>
+    <% if alert %>
+      <div class="flash alert alert-warning"><%= alert %></div>
+    <% end %>
+    <% if notice %>
+      <div class="flash alert alert-info"><%= notice %></div>
+    <% end %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
