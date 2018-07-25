@@ -1,13 +1,13 @@
 class BooksController < ApplicationController
 
   def new
-    @book = Book.new
     authenticate_user! if not user_signed_in?
+    @book = Book.new
   end
 
   def edit
-    @book = Book.find(params[:id])
     authenticate_user! if not user_signed_in?
+    @book = Book.find(params[:id])
   end
 
   def index
@@ -21,7 +21,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    if require_auth then
+    if require_login then
       book = Book.new(book_params)
       render json: {
         'saved' => book.save,
@@ -31,7 +31,7 @@ class BooksController < ApplicationController
   end
 
   def update
-    if require_auth then
+    if require_login then
       book = Book.find(params[:id])
       render json: {
         'updated' => book.update(book_params),
@@ -41,7 +41,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    if require_auth then
+    if require_login then
       book = Book.find(params[:id])
       render json: {
         'deleted' => book.destroy

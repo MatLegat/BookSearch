@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Book</title>
+    <title>Book Searck</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <!-- MOBILE APPEARENCE: -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#333399">
+    <meta name="msapplication-TileColor" content="#333399"/>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+    <%= javascript_tag "window._signed_in = #{user_signed_in?}" %>
   </head>
 
   <body>
@@ -19,7 +25,7 @@
         <% if not user_signed_in? %>
           <%= link_to "Log in", new_session_path(User), class: "button btn btn-primary" %>
         <% else %>
-          <%= link_to "Edit account", edit_user_registration_path, class: "button btn btn-secondary" %>
+          <%= link_to "Manage Users", {controller: '/users'}, class: "button btn btn-secondary" %>
           <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "button btn btn-danger" %>
         <% end %>
       </span>
