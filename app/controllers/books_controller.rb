@@ -1,12 +1,12 @@
 class BooksController < ApplicationController
 
+  before_action :require_login, except: [:index, :show]
+
   def new
-    authenticate_user! if not user_signed_in?
     @book = Book.new
   end
 
   def edit
-    authenticate_user! if not user_signed_in?
     @book = Book.find(params[:id])
   end
 
@@ -21,31 +21,29 @@ class BooksController < ApplicationController
   end
 
   def create
-    if require_login then
-      book = Book.new(book_params)
-      render json: {
-        'saved' => book.save,
-        'errors' => book.errors
-      }.to_json
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to root_path, notice: 'Book created'
+    else
+      render 'new'
     end
   end
 
   def update
-    if require_login then
-      book = Book.find(params[:id])
-      render json: {
-        'updated' => book.update(book_params),
-        'errors' => book.errors
-      }.to_json
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      redirect_to root_path, notice: 'Book updated'
+    else
+      render 'edit'
     end
   end
 
   def destroy
-    if require_login then
-      book = Book.find(params[:id])
-      render json: {
-        'deleted' => book.destroy
-      }.to_json
+    book = Book.find(params[:id])
+    if book.destroy
+      redirect_to root_path, notice: 'Book deleted.'
+    else
+      redirect_to root_path, alert: 'Couldn\'t delete book.'
     end
   end
 
@@ -55,12 +53,7 @@ class BooksController < ApplicationController
     end
 
     def require_login
-      return true if user_signed_in?
-      render json: {
-        'saved' => false,
-        'errors' => {'user' => ['not logged in']}
-      }.to_json
-      return false
+      authenticate_user! unless user_signed_in?
     end
 
 end

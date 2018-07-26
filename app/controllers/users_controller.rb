@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    # render json: @users.to_json
   end
 
   def destroy
@@ -26,6 +25,6 @@ class UsersController < ApplicationController
   end
 
   def require_login
-    authenticate_user! if not user_signed_in?
+    authenticate_user! unless user_signed_in?
   end
 end

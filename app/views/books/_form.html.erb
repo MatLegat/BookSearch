@@ -1,21 +1,42 @@
 <%= form_with model: @book, local: true do |form| %>
-  <p>
+
+  <% if @book.errors.any? %>
+    <div class="flash alert alert-warning">
+      <h2>
+        <%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:
+      </h2>
+      <ul>
+        <% @book.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+  <div class="field form-group">
     <%= form.label :title %><br />
-    <%= form.text_field :title %><br />
-  </p>
-  <p>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+  <div class="field form-group">
     <%= form.label :author %><br />
-    <%= form.text_field :author %><br />
-  </p>
-  <p>
+    <%= form.text_field :author, class: "form-control" %>
+  </div>
+  <div class="field form-group">
     <%= form.label :description %><br />
-    <%= form.text_area :description %><br />
-  </p>
-  <p>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+  <div class="field form-group">
     <%= form.label :img %><br />
-    <%= form.text_field :img %><br />
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+    <%= form.text_field :img, class: "form-control" %>
+  </div>
+  <div class="actions form-group">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to 'Cancel', root_path, class: "btn btn-warning" %>
+    <% if action_name == 'edit' %>
+      <%= link_to 'Delete Book', book_path(@book),
+        method: :delete,
+        data: { confirm: 'Are you sure?' },
+        class: "btn btn-danger" %>
+    <% end %>
+  </div>
 <% end %>

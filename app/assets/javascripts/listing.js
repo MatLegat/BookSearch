@@ -16,7 +16,11 @@ $(document).ready(() => {
           <div class="content">
             <img class="image" src="${book.img}"></img>
             <p class="description">${book.description}</p>
-            ${window._signed_in ? '<a href="/books/'+book.id+'/edit" class="btn btn-secondary">Edit</a>' : ''}
+            ${
+              window._signed_in ?
+                '<a href="/books/'+book.id+'/edit" class="btn btn-secondary">Edit</a>'
+                : ''
+            }
           </div>
         </li>
       `)
