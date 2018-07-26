@@ -54,7 +54,7 @@ class BooksController < ApplicationController
       params.require(:book).permit(:title, :author, :description, :img)
     end
 
-    def require_auth
+    def require_login
       return true if user_signed_in?
       render json: {
         'saved' => false,

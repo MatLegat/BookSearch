@@ -1,12 +1,21 @@
 <%= javascript_include_tag 'listing' %>
-<h1>Listing</h1>
 
 <div id="books">
-  <input class="search" placeholder="Search" />
-  <button class="sort" data-sort="title">
-    Sort by title
-  </button>
+  <div class="input-group mb-3">
+    <input class="search form-control" placeholder="Search" />
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" disabled>
+        Sort by:
+      </button>
+      <button class="sort btn btn-outline-primary" data-sort="title">
+        title
+      </button>
+      <button class="sort btn btn-outline-primary" data-sort="author">
+        author
+      </button>
+    </div>
+  </div>
 
-  <ul class="list"></ul>
+  <ul class="list list-group"></ul>
 
 </div>

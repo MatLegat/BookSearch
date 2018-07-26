@@ -1,3 +1,68 @@
 // Place all the styles related to the List controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.list-item {
+  .title {
+    margin-bottom: 0;
+  }
+  .content {
+    width: 100%;
+    .image {
+      max-height: 8em;
+      max-width: 8em;
+      float: left;
+      margin-right: 1em;
+      margin-bottom: 1em;
+    }
+  }
+}
+
+.sort:hover {
+  text-decoration: none;
+  background-color:#1b8aba;
+}
+.sort:focus {
+  outline:none;
+}
+.sort:after {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  content:"";
+  position: relative;
+  top:-10px;
+  right:-3px;
+}
+.sort.asc:after {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #007bff;
+  content:"";
+  position: relative;
+  top:13px;
+  right:-3px;
+  transition: 0.2s;
+}
+.sort.asc:hover:after {
+  border-top: 5px solid #fff;
+}
+.sort.desc:after {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #007bff;
+  content:"";
+  position: relative;
+  top:-10px;
+  right:-3px;
+  transition: 0.2s;
+}
+.sort.desc:hover:after {
+  border-bottom: 5px solid #fff;
+}
